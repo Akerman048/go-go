@@ -8,5 +8,5 @@ myBill := newBill("Mario's bill")
 
 
 
-fmt.Println(myBill)
+fmt.Println(myBill.format())
 }

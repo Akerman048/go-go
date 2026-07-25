@@ -1,0 +1,6 @@
+Bill breakdown: 
+coffee:                   ...$6 
+ham:                      ...$4 
+bread:                    ...$4 
+tip:                      ...$2
+total:                    ...$16.00

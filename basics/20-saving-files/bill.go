@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 
@@ -57,14 +58,23 @@ func (b *bill) addItem(name string, price float64){
 
 
 // save bill
-func (b *bill) save() {
-	data := []byte(b.format())
-
-err := os.WriteFile("bills/"+b.name+".txt", data, 0644)
+func (b *bill) save() error {
+err := os.MkdirAll("bills", 0755)
 
 if err != nil {
-	panic(err)
+	return err
 }
 
-fmt.Println("Bill was saved to file")
+filename := b.name + ".txt"
+filepath := filepath.Join("bills", filename)
+
+data := []byte(b.format())
+
+err = os.WriteFile(filepath, data, 0644)
+if err != nil{
+	return err
+}
+
+fmt.Println("Bill was saved to:", filepath)
+return nil
 }

@@ -58,8 +58,27 @@ func (c circle) circumf() float64 {
 	return  2 * math.Pi * c.radius
 }
 
+func printShapeInfo (s shape) {
+	fmt.Printf("area of %T is: %0.2f \n", s, s.area())
+	fmt.Printf("circumference of %T is: %0.2f \n", s, s.circumf())
+}
+
 func main() {
 myBill := bill{name: "Leon"}
-
 saveData(&myBill)
+
+//-----
+
+
+shapes := []shape{
+	square{length: 15.2},
+	circle{radius: 7.5},
+	circle{radius: 12.3},
+	square{length: 4.8},
+}
+
+for _, v := range shapes {
+	printShapeInfo(v)
+	fmt.Println("---")
+}
 }
